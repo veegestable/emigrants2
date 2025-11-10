@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Occupation Trends Multi-Series Line Chart Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-step { background: #f0f8ff; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .expected { background: #f0fff0; padding: 10px; margin: 5px 0; border-radius: 3px; }
+        .feature { background: #fffbf0; padding: 8px; margin: 4px 0; border-radius: 3px; border-left: 3px solid #ffa500; }
+        .code { background: #f5f5f5; padding: 5px; font-family: monospace; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>📈 Occupation Trends Multi-Series Line Chart Test Guide</h1>
+    
+    <div class="test-step">
+        <h2>📋 Implementation Summary</h2>
+        <p>The Occupation Analysis has been transformed into a comprehensive multi-series line chart with:</p>
+        
+        <div class="feature">
+            <h4>✅ Chart Structure</h4>
+            <ul>
+                <li><strong>Chart Type:</strong> Multi-series line chart showing trends (1981–2020)</li>
+                <li><strong>X-axis:</strong> Years with tick marks every 5 years for clarity</li>
+                <li><strong>Y-axis:</strong> Number of emigrants with K formatting for thousands</li>
+                <li><strong>Series:</strong> 14 occupation categories as separate lines</li>
+            </ul>
+        </div>
+        
+        <div class="feature">
+            <h4>✅ Enhanced Styling</h4>
+            <ul>
+                <li><strong>Key Categories:</strong> Students, Housewives, Prof'l, No Occupation Reported (bold lines)</li>
+                <li><strong>Color-blind friendly:</strong> Distinct colors from COLORS palette</li>
+                <li><strong>Legend:</strong> Vertical layout on the right side for better readability</li>
+                <li><strong>Grid:</strong> Light horizontal gridlines for value comparison</li>
+            </ul>
+        </div>
+        
+        <div class="feature">
+            <h4>✅ Interactive Elements</h4>
+            <ul>
+                <li><strong>Tooltips:</strong> Show Year, Occupation, and formatted emigrant count</li>
+                <li><strong>Active Dots:</strong> Highlighted points on hover</li>
+                <li><strong>Proper Labels:</strong> X and Y axis labels with styling</li>
+                <li><strong>Key Insights:</strong> Summary box with notable trends</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-step">
+        <h2>🚀 Testing Steps</h2>
+        
+        <h3>Step 1: Navigate to Occupation Chart</h3>
+        <p>Go to the 2nd chart in the navigator (Occupation Trends)</p>
+        <div class="expected">
+            <strong>Expected:</strong> Chart title should now read "Occupation Trends" instead of "Occupation Analysis"
+        </div>
+        
+        <h3>Step 2: Upload CSV Data</h3>
+        <p>Upload <span class="code">Emigrant-1981-2020-Occu.csv</span> if not already loaded</p>
+        <div class="expected">
+            <strong>Expected:</strong> Multi-series line chart should appear immediately
+        </div>
+        
+        <h3>Step 3: Verify Chart Elements</h3>
+        <ul>
+            <li><strong>Title:</strong> "Trends in Emigrant Occupations (1981–2020)"</li>
+            <li><strong>Subtitle:</strong> "Each line represents the number of emigrants by occupation category over time"</li>
+            <li><strong>X-axis Label:</strong> "Year"</li>
+            <li><strong>Y-axis Label:</strong> "Number of Emigrants"</li>
+        </ul>
+        
+        <h3>Step 4: Check Line Series</h3>
+        <div class="expected">
+            <strong>Expected Series (14 lines):</strong>
+            <ul>
+                <li>• Prof'l (bold line - key category)</li>
+                <li>• Managerial</li>
+                <li>• Clerical</li>
+                <li>• Sales</li>
+                <li>• Service</li>
+                <li>• Agriculture</li>
+                <li>• Production</li>
+                <li>• Armed Forces</li>
+                <li>• Housewives (bold line - key category)</li>
+                <li>• Retirees</li>
+                <li>• Students (bold line - key category)</li>
+                <li>• Minors</li>
+                <li>• Out of School Youth</li>
+                <li>• No Occupation Reported (bold line - key category)</li>
+            </ul>
+        </div>
+        
+        <h3>Step 5: Test Interactions</h3>
+        <p><strong>Hover over lines:</strong></p>
+        <div class="expected">
+            <strong>Expected:</strong>
+            <ul>
+                <li>Tooltip appears showing "Year: XXXX"</li>
+                <li>Occupation name and formatted count (e.g., "25,000")</li>
+                <li>Active dot appears on the line</li>
+                <li>Legend remains visible on the right side</li>
+            </ul>
+        </div>
+        
+        <h3>Step 6: Verify Key Insights</h3>
+        <p>Check the blue insights box below the chart:</p>
+        <div class="expected">
+            <strong>Expected Insights:</strong>
+            <ul>
+                <li>Students consistently represent the largest group</li>
+                <li>Housewives show steady numbers throughout</li>
+                <li>Professional emigration peaked in mid-2000s</li>
+                <li>Armed Forces emigration declined after 1980s</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-step">
+        <h2>🔍 Expected Data Patterns</h2>
+        
+        <h3>Major Trends to Verify:</h3>
+        <ul>
+            <li><strong>Students (highest line):</strong> Consistent growth from ~10K to 25K+</li>
+            <li><strong>Housewives (second highest):</strong> Steady around 10-15K range</li>
+            <li><strong>No Occupation Reported:</strong> Rising trend especially after 2000</li>
+            <li><strong>Prof'l:</strong> Peak around 2005-2007, then declining</li>
+            <li><strong>Armed Forces:</strong> Sharp decline from 1981 peak to very low levels</li>
+            <li><strong>Minors:</strong> Steady growth over time</li>
+        </ul>
+        
+        <h3>Visual Elements:</h3>
+        <ul>
+            <li>X-axis shows years 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020</li>
+            <li>Y-axis formatted as 0, 5K, 10K, 15K, 20K, 25K</li>
+            <li>Light gridlines for easy value reading</li>
+            <li>Colorblind-friendly line colors</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🎯 Success Criteria</h2>
+        <ul>
+            <li>✅ 14 distinct occupation lines visible</li>
+            <li>✅ Clear chronological progression from 1981-2020</li>
+            <li>✅ Key categories (Students, Housewives, Prof'l, No Occupation) emphasized</li>
+            <li>✅ Legend shows all occupation categories clearly</li>
+            <li>✅ Tooltips provide detailed information on hover</li>
+            <li>✅ Y-axis uses thousands formatting (5K, 10K, etc.)</li>
+            <li>✅ Chart title and labels match specifications</li>
+            <li>✅ Key insights box provides trend analysis</li>
+            <li>✅ CRUD operations still work for data management</li>
+            <li>✅ Professional layout with proper margins and spacing</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🔧 Technical Implementation</h2>
+        
+        <h3>Configuration Changes:</h3>
+        <ul>
+            <li><strong>csvDataService.js:</strong> Changed chartType from 'faceted' to 'trends'</li>
+            <li><strong>ChartNavigator.jsx:</strong> Updated name and description</li>
+            <li><strong>UniversalChart.jsx:</strong> Enhanced trends case with occupation-specific styling</li>
+        </ul>
+        
+        <h3>Key Features:</h3>
+        <ul>
+            <li><strong>Data Processing:</strong> Uses csvService.getDataForTrends() for proper time series data</li>
+            <li><strong>Sorting:</strong> Categories ordered by predefinedOptions for consistency</li>
+            <li><strong>Styling:</strong> Key categories get bold lines (strokeWidth: 3 vs 2)</li>
+            <li><strong>Layout:</strong> Vertical legend on right, enhanced margins</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🐛 Troubleshooting</h2>
+        <p><strong>If chart doesn't appear:</strong></p>
+        <ul>
+            <li>Check that CSV data is uploaded correctly</li>
+            <li>Verify console for any data processing errors</li>
+            <li>Ensure trends data is being generated properly</li>
+        </ul>
+        
+        <p><strong>If lines are missing:</strong></p>
+        <ul>
+            <li>Check that all 14 occupation categories are in the data</li>
+            <li>Verify that dataKeys are being extracted correctly</li>
+            <li>Look for any filtering that might be excluding categories</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('📈 Occupation Trends Multi-Series Line Chart Test Guide Loaded');
+        console.log('✨ Ready to test comprehensive occupation trends visualization');
+        console.log('🎯 Features: 14 occupation series, enhanced styling, key insights, professional layout');
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Scatter Plot Test Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-step { background: #f0f8ff; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .expected { background: #f0fff0; padding: 10px; margin: 5px 0; border-radius: 3px; }
+        .code { background: #f5f5f5; padding: 5px; font-family: monospace; border-radius: 3px; }
+        .feature { background: #fffbf0; padding: 8px; margin: 4px 0; border-radius: 3px; border-left: 3px solid #ffa500; }
+    </style>
+</head>
+<body>
+    <h1>🎯 Gender Distribution Scatter Plot Test Guide</h1>
+    
+    <div class="test-step">
+        <h2>📋 Implementation Summary</h2>
+        <p>The Gender Distribution chart has been converted to a comprehensive scatter plot with:</p>
+        
+        <div class="feature">
+            <h4>✅ Chart Structure</h4>
+            <ul>
+                <li><strong>X-axis:</strong> Male emigrant counts (linear scale, thousands format)</li>
+                <li><strong>Y-axis:</strong> Female emigrant counts (linear scale, thousands format)</li>
+                <li><strong>Data Points:</strong> Each year (1981-2020) as a single point</li>
+            </ul>
+        </div>
+        
+        <div class="feature">
+            <h4>✅ Visual Features</h4>
+            <ul>
+                <li><strong>Decade Color Coding:</strong> 1980s=Blue, 1990s=Green, 2000s=Orange, 2010s=Purple, 2020+=Red</li>
+                <li><strong>Point Sizing:</strong> Standard size with 2020 highlighted (larger, pandemic marker)</li>
+                <li><strong>Reference Line:</strong> Diagonal y=x line showing gender parity</li>
+                <li><strong>Grid Lines:</strong> Light grid for easy comparison</li>
+            </ul>
+        </div>
+        
+        <div class="feature">
+            <h4>✅ Interactive Elements</h4>
+            <ul>
+                <li><strong>Rich Tooltips:</strong> Year, decade, male/female counts, total, pandemic indicator</li>
+                <li><strong>Decade Legend:</strong> Color-coded legend showing time periods</li>
+                <li><strong>Analysis Summary:</strong> Key insights and color coding reference</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-step">
+        <h2>🚀 Testing Steps</h2>
+        
+        <h3>Step 1: Start Development Server</h3>
+        <div class="code">npm run dev</div>
+        
+        <h3>Step 2: Navigate to Gender Chart</h3>
+        <p>Go to the 6th chart in the navigator (Gender Distribution)</p>
+        <div class="expected">
+            <strong>Expected:</strong> Should see scatter plot instead of previous stacked area chart
+        </div>
+        
+        <h3>Step 3: Verify Chart Elements</h3>
+        <ul>
+            <li><strong>Title:</strong> "Gender Relationship Analysis - Scatter Plot"</li>
+            <li><strong>Subtitle:</strong> "Relationship Between Male and Female Emigrants (1981–2020)"</li>
+            <li><strong>Description:</strong> "Each point represents one year; diagonal line shows gender parity"</li>
+        </ul>
+        
+        <h3>Step 4: Check Visual Components</h3>
+        <ul>
+            <li>✅ X-axis labeled "Male Emigrants" with 'K' format (e.g., "50K")</li>
+            <li>✅ Y-axis labeled "Female Emigrants" with 'K' format</li>
+            <li>✅ Diagonal dashed gray reference line (y = x)</li>
+            <li>✅ Points colored by decade with legend</li>
+            <li>✅ 2020 point highlighted (larger size)</li>
+        </ul>
+        
+        <h3>Step 5: Test Interactions</h3>
+        <p><strong>Hover over data points:</strong></p>
+        <div class="expected">
+            <strong>Expected Tooltip:</strong>
+            <ul>
+                <li>Year: 2006 (2000s)</li>
+                <li>Male Emigrants: 75,728</li>
+                <li>Female Emigrants: 98,322</li>
+                <li>Total: 174,050</li>
+                <li>⚠️ Pandemic Year (if 2020)</li>
+            </ul>
+        </div>
+        
+        <h3>Step 6: Verify Data Insights</h3>
+        <p>Check the analysis summary box below the chart:</p>
+        <ul>
+            <li>Key insights about female majority</li>
+            <li>2020 pandemic impact note</li>
+            <li>Decade color coding reference</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🔍 Expected Data Pattern</h2>
+        
+        <h3>Visual Analysis</h3>
+        <ul>
+            <li><strong>All points above diagonal:</strong> Indicates females consistently outnumber males</li>
+            <li><strong>Upward trend:</strong> Both male and female emigration increased over time</li>
+            <li><strong>2020 outlier:</strong> Sharp drop due to pandemic (bottom-left of cluster)</li>
+            <li><strong>Peak years:</strong> 2006-2007 highest points (top-right)</li>
+        </ul>
+        
+        <h3>Color Distribution</h3>
+        <ul>
+            <li><strong>Blue (1980s):</strong> 1981-1989, lower-left cluster</li>
+            <li><strong>Green (1990s):</strong> 1990-1999, middle progression</li>
+            <li><strong>Orange (2000s):</strong> 2000-2009, highest peak area</li>
+            <li><strong>Purple (2010s):</strong> 2010-2019, high but declining</li>
+            <li><strong>Red (2020+):</strong> 2020 only, marked drop</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🎯 Success Criteria</h2>
+        <ul>
+            <li>✅ Scatter plot renders with proper male/female axes</li>
+            <li>✅ Diagonal reference line y=x visible</li>
+            <li>✅ Points colored by decade with legend</li>
+            <li>✅ 2020 point highlighted as pandemic year</li>
+            <li>✅ Tooltips show year, counts, total, and decade</li>
+            <li>✅ Axes formatted with thousands separators (K)</li>
+            <li>✅ Analysis summary box provides insights</li>
+            <li>✅ All points positioned above diagonal (females > males)</li>
+            <li>✅ Chart title reflects scatter plot purpose</li>
+            <li>✅ Interactive hover effects work smoothly</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🔧 Technical Implementation</h2>
+        
+        <h3>Configuration Changes</h3>
+        <p>Updated <span class="code">csvDataService.js</span>:</p>
+        <ul>
+            <li>Sex dataset: <span class="code">chartType: 'scatter'</span></li>
+            <li>Purpose: "Gender Relationship Analysis"</li>
+        </ul>
+        
+        <h3>Data Processing</h3>
+        <p>Added scatter case in <span class="code">getChartData()</span>:</p>
+        <ul>
+            <li>Transform year-based data to scatter points</li>
+            <li>Calculate male/female counts per year</li>
+            <li>Add decade categorization and color coding</li>
+            <li>Mark 2020 as pandemic year</li>
+        </ul>
+        
+        <h3>Visualization</h3>
+        <p>New scatter case in <span class="code">renderChart()</span>:</p>
+        <ul>
+            <li>ScatterChart with proper axes scaling</li>
+            <li>Custom tooltip with rich information</li>
+            <li>Decade-based color grouping</li>
+            <li>Reference line for gender parity</li>
+            <li>Analysis summary component</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🐛 Troubleshooting</h2>
+        <p><strong>If scatter plot doesn't appear:</strong></p>
+        <ul>
+            <li>Check browser console for errors</li>
+            <li>Verify sex dataset configuration changed to 'scatter'</li>
+            <li>Ensure CSV data is loaded properly</li>
+        </ul>
+        
+        <p><strong>If colors don't show:</strong></p>
+        <ul>
+            <li>Check decade calculation logic</li>
+            <li>Verify decadeGroups object creation</li>
+            <li>Ensure color mapping is correct</li>
+        </ul>
+        
+        <p><strong>If reference line missing:</strong></p>
+        <ul>
+            <li>ReferenceLine component might need adjustment</li>
+            <li>Check Recharts version compatibility</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('🎯 Gender Scatter Plot Test Guide Loaded');
+        console.log('✨ Ready to test comprehensive scatter plot implementation');
+        console.log('📊 Features: Decade colors, reference line, rich tooltips, pandemic highlighting');
+    </script>
+</body>
+</html>

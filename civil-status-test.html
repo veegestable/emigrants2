@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Civil Status Chart Test Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-step { background: #f0f8ff; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .expected { background: #f0fff0; padding: 10px; margin: 5px 0; border-radius: 3px; }
+        .code { background: #f5f5f5; padding: 5px; font-family: monospace; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Civil Status Sunburst Chart Test Guide</h1>
+    
+    <div class="test-step">
+        <h2>📋 Implementation Summary</h2>
+        <p>The Civil Status chart has been implemented with:</p>
+        <ul>
+            <li><strong>Sunburst Structure:</strong> Year → Civil Status → Count hierarchy</li>
+            <li><strong>Custom Visualization:</strong> Grid of year-based pie charts (since Recharts lacks native sunburst)</li>
+            <li><strong>Interactive Tooltips:</strong> Hover shows Year, Civil Status, and Emigrant Count</li>
+            <li><strong>CSV Import Support:</strong> Full file upload and parsing</li>
+            <li><strong>CRUD Operations:</strong> Add, update, delete records</li>
+            <li><strong>Area Sizing:</strong> Pie slice size represents count</li>
+            <li><strong>Color Coding:</strong> Each civil status has distinct color</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🚀 Testing Steps</h2>
+        
+        <h3>Step 1: Start Development Server</h3>
+        <div class="code">npm run dev</div>
+        
+        <h3>Step 2: Navigate to Civil Status Chart</h3>
+        <p>Go to the 4th chart in the navigator (Civil Status)</p>
+        <div class="expected">
+            <strong>Expected:</strong> Should see "No data available" initially
+        </div>
+        
+        <h3>Step 3: Upload CSV File</h3>
+        <p>Upload the <span class="code">Emigrant-1988-2020-CivilStatus.csv</span> file</p>
+        <div class="expected">
+            <strong>Expected:</strong> Chart should populate with grid of pie charts, one for each year (1988-2020)
+        </div>
+        
+        <h3>Step 4: Test Sunburst Visualization</h3>
+        <p>Examine the chart structure:</p>
+        <ul>
+            <li>Grid layout with year labels</li>
+            <li>Pie charts showing civil status distribution</li>
+            <li>Color-coded slices (Single, Married, Widower, etc.)</li>
+            <li>Summary bar chart at bottom</li>
+        </ul>
+        
+        <h3>Step 5: Test Hover Tooltips</h3>
+        <p>Hover over pie chart slices</p>
+        <div class="expected">
+            <strong>Expected:</strong> Tooltip shows "Year XXXX", Civil Status name, and Count value
+        </div>
+        
+        <h3>Step 6: Test CRUD Operations</h3>
+        <p>Use the data management form to:</p>
+        <ul>
+            <li>Add a new record (select Civil Status, Year, enter Count)</li>
+            <li>Update an existing record</li>
+            <li>Delete a record</li>
+        </ul>
+        <div class="expected">
+            <strong>Expected:</strong> Chart updates immediately after each operation
+        </div>
+    </div>
+
+    <div class="test-step">
+        <h2>🔍 Data Structure Verification</h2>
+        <p>Check browser console for debug messages:</p>
+        <div class="code">
+getChartData: Processing YEAR-based dataset
+getChartData: Getting sunburst data
+Sunburst hierarchical data: { name: 'Civil Status', children: [...] }
+        </div>
+        
+        <h3>Expected Data Structure:</h3>
+        <pre>{
+  name: 'Civil Status',
+  children: [
+    {
+      name: '1988',
+      year: 1988,
+      children: [
+        { name: 'Single', value: 31989, year: 1988, civilStatus: 'Single', count: 31989 },
+        { name: 'Married', value: 23530, year: 1988, civilStatus: 'Married', count: 23530 },
+        ...
+      ]
+    },
+    ...
+  ]
+}</pre>
+    </div>
+
+    <div class="test-step">
+        <h2>✅ Success Criteria</h2>
+        <ul>
+            <li>✅ CSV import loads data correctly</li>
+            <li>✅ Sunburst visualization shows hierarchical Year → Civil Status → Count structure</li>
+            <li>✅ Hover tooltips display Year, Civil Status, and Count</li>
+            <li>✅ Area sizing reflects emigrant counts</li>
+            <li>✅ Color coding distinguishes civil status categories</li>
+            <li>✅ CRUD operations work and update chart in real-time</li>
+            <li>✅ Year selector works for data management</li>
+            <li>✅ Data persists to Firebase after operations</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🐛 Troubleshooting</h2>
+        <p><strong>If chart doesn't appear:</strong></p>
+        <ul>
+            <li>Check browser console for errors</li>
+            <li>Verify CSV file format matches expected structure</li>
+            <li>Ensure Firebase connection is working</li>
+        </ul>
+        
+        <p><strong>If CRUD doesn't work:</strong></p>
+        <ul>
+            <li>Check year selector has values</li>
+            <li>Verify civil status dropdown is populated</li>
+            <li>Check Firebase write permissions</li>
+        </ul>
+    </div>
+
+    <script>
+        // Auto-open when accessed
+        console.log('🧪 Civil Status Test Guide Loaded');
+        console.log('✅ Ready to test Civil Status sunburst chart implementation');
+    </script>
+</body>
+</html>

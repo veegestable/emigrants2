@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destination Chart Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-step { background: #f0f8ff; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .expected { background: #f0fff0; padding: 10px; margin: 5px 0; border-radius: 3px; }
+        .code { background: #f5f5f5; padding: 5px; font-family: monospace; border-radius: 3px; }
+        .issue { background: #ffe0e0; padding: 10px; margin: 5px 0; border-radius: 3px; border-left: 4px solid #ff4444; }
+    </style>
+</head>
+<body>
+    <h1>🛠️ Destination Chart CSV Upload Fix</h1>
+    
+    <div class="issue">
+        <h2>🐛 Reported Issue</h2>
+        <p><strong>Problem:</strong> When adding CSV to destination countries chart:</p>
+        <ul>
+            <li>CSV won't read/process properly</li>
+            <li>Clears all data management records</li>
+            <li>Chart doesn't display data</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🔧 Applied Fixes</h2>
+        <h3>1. Fixed CSV Configuration</h3>
+        <p>Updated destination configuration in <span class="code">csvDataService.js</span>:</p>
+        <ul>
+            <li><strong>Before:</strong> <span class="code">keyField: 'COUNTRY'</span>, <span class="code">yearFields: ['1981'...'2020']</span></li>
+            <li><strong>After:</strong> <span class="code">keyField: 'YEAR'</span>, <span class="code">yearFields: ['USA', 'CANADA', 'JAPAN'...]</span></li>
+        </ul>
+        
+        <h3>2. Fixed getDataForTrends Method</h3>
+        <p>Updated year-based data processing to handle destination countries properly</p>
+        
+        <h3>3. Fixed availableYears Calculation</h3>
+        <p>Fixed year selector in data management to show actual years (1981-2020) instead of country names</p>
+        
+        <h3>4. Enhanced Debug Output</h3>
+        <p>Added comprehensive console logging to track data processing and identify issues</p>
+        
+        <h3>5. CSV Structure Match</h3>
+        <p>Configuration now matches the actual CSV structure:</p>
+        <div class="code">
+YEAR,USA,CANADA,JAPAN,AUSTRALIA,ITALY,...<br>
+1981,40307,5226,254,2752,4,...<br>
+1982,44438,4898,310,2931,8,...
+        </div>
+    </div>
+
+    <div class="test-step">
+        <h2>🧪 Testing Steps</h2>
+        
+        <h3>Step 1: Navigate to Destination Chart</h3>
+        <p>Go to the 5th chart in the navigator (Destination Countries)</p>
+        
+        <h3>Step 2: Check Console Output</h3>
+        <p>Open browser dev tools (F12) and look for debug messages:</p>
+        <div class="code">
+� Starting CSV upload for: destination<br>
+✅ CSV parsed successfully: { datasetType: 'destination', processedLength: 40, ... }<br>
+💾 CSV data uploaded and saved to Firebase<br>
+UniversalChart Debug: { datasetType: 'destination', chartType: 'trends', availableYearsLength: 40, ... }
+        </div>
+        
+        <h3>Step 3: Upload CSV File</h3>
+        <p>Upload <span class="code">Emigrant-1981-2020-MajorCountry.csv</span></p>
+        <div class="expected">
+            <strong>Expected:</strong> 
+            <ul>
+                <li>Console shows successful CSV parsing</li>
+                <li>Chart displays multi-line graph with country trends</li>
+                <li>Data management table shows records with proper years and countries</li>
+                <li>No clearing of existing data</li>
+            </ul>
+        </div>
+        
+        <h3>Step 4: Verify Chart Display</h3>
+        <p>Chart should show:</p>
+        <ul>
+            <li>Multi-line chart with one line per country</li>
+            <li>X-axis: Years (1981-2020)</li>
+            <li>Y-axis: Emigrant count</li>
+            <li>Legend showing country names</li>
+            <li>Hover tooltips showing year, country, and count</li>
+        </ul>
+        
+        <h3>Step 5: Test Data Management</h3>
+        <p>Use the CRUD form to:</p>
+        <ul>
+            <li>Add a new record (select Country, Year, enter Count)</li>
+            <li>Verify the record appears in the table</li>
+            <li>Verify the chart updates immediately</li>
+            <li>Check that Firebase saves the data</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>🔍 Technical Details</h2>
+        
+        <h3>Data Structure</h3>
+        <p><strong>Input CSV:</strong> Years as rows, Countries as columns</p>
+        <p><strong>Processed Data:</strong> Each row becomes { year: 1981, USA: 40307, CANADA: 5226, ... }</p>
+        <p><strong>Chart Data:</strong> Multi-line format with year on X-axis, countries as separate lines</p>
+        
+        <h3>Configuration Changes</h3>
+        <ul>
+            <li>Destination now treated as year-based dataset (like sex, civil status)</li>
+            <li>keyField='YEAR' triggers proper year-based processing logic</li>
+            <li>yearFields contains country names instead of year strings</li>
+            <li>Chart type remains 'trends' for multi-line display</li>
+        </ul>
+    </div>
+
+    <div class="test-step">
+        <h2>✅ Success Criteria</h2>
+        <ul>
+            <li>✅ CSV uploads without clearing existing data</li>
+            <li>✅ Chart displays multi-line trends for each country</li>
+            <li>✅ Data management CRUD operations work properly</li>
+            <li>✅ Console shows no parsing errors</li>
+            <li>✅ Firebase data persistence works</li>
+            <li>✅ Chart updates in real-time with data changes</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('🛠️ Destination Chart Fix Test Guide Loaded');
+        console.log('📊 Ready to test destination countries chart CSV upload and display');
+        console.log('🔧 Applied fixes: CSV config, data processing, year-based handling');
+    </script>
+</body>
+</html>

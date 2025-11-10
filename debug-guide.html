@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-section { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .console-output { background: #000; color: #0f0; padding: 10px; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>Chart Data Debug Test</h1>
+    
+    <div class="debug-section">
+        <h2>Issue: "No data available" in charts</h2>
+        <p>Even though data exists in Firebase database, charts show "No data available"</p>
+    </div>
+
+    <div class="debug-section">
+        <h2>Debugging Steps:</h2>
+        <ol>
+            <li>Start dev server: <code>npm run dev</code></li>
+            <li>Open browser developer console (F12)</li>
+            <li>Navigate to Age chart (first chart)</li>
+            <li>Look for console output starting with 🔥, ✅, 🆕, or ❌</li>
+            <li>Check what data is being loaded</li>
+        </ol>
+    </div>
+
+    <div class="debug-section">
+        <h2>Expected Console Output:</h2>
+        <div class="console-output">🔥 Firebase data loaded: { datasetType: 'age', firebaseLength: X, sample: [...] }
+✅ Data set from Firebase: X records
+UniversalChart Debug: { datasetType: 'age', dataLength: X, chartType: 'distribution', chartDataLength: Y, ... }</div>
+    </div>
+
+    <div class="debug-section">
+        <h2>Potential Issues:</h2>
+        <ul>
+            <li><strong>Firebase data format mismatch:</strong> Data might be stored differently than expected</li>
+            <li><strong>Chart data processing:</strong> getChartData() might not be processing the Firebase data correctly</li>
+            <li><strong>csvService sync:</strong> csvService.data might not be updated with Firebase data</li>
+            <li><strong>Data structure:</strong> Age dataset expects categories as rows, years as columns</li>
+        </ul>
+    </div>
+
+    <div class="debug-section">
+        <h2>Data Structure Expected:</h2>
+        <h3>Age Dataset (distribution chart):</h3>
+        <pre>{
+  "age_group": "15 - 19",
+  "1981": 1500,
+  "1982": 1600,
+  "1983": 1400,
+  ...
+}</pre>
+        
+        <h3>Sex Dataset (composition chart):</h3>
+        <pre>{
+  "YEAR": 1981,
+  "MALE": 20350,
+  "FEMALE": 28517
+}</pre>
+    </div>
+
+    <div class="debug-section">
+        <h2>Quick Fix Test:</h2>
+        <p>If the issue persists after checking console:</p>
+        <ol>
+            <li>Go to Age chart</li>
+            <li>Upload a new CSV file to test data processing</li>
+            <li>Check if the chart appears after upload</li>
+            <li>If yes, the issue is Firebase data format</li>
+            <li>If no, the issue is chart rendering logic</li>
+        </ol>
+    </div>
+
+    <script>
+        // Auto-refresh every 5 seconds to check for updates
+        setTimeout(() => {
+            window.location.reload();
+        }, 30000);
+    </script>
+</body>
+</html>
